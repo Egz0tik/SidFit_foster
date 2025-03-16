@@ -1,3 +1,4 @@
+from colorama import *
 print('Добро пожаловать в "SIDFIT-FOSTER"')
 name = input('Введите ваше имя: ')
 name1 ='Здравствуйте: '
