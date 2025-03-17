@@ -25,9 +25,21 @@ username_lable.pack()
 
 
 #добавляем поле для ввода текста
-username_entry = Entry(root, bg='black', fg='lime', font='Arial 12 bold')
+username_entry = Entry(root, bg='black', fg='lime', font='Arial 12')
 username_entry.pack()
-# Выводим в окно
+# Выводим в окно username_entry.pack()
+
+# добавим поле password
+password_lable = Label(root, text= 'Пароль', font='Arial 11 bold',bg='black', fg='white', padx=10, pady=8)
+password_lable.pack()
+# Выводим в окно password_lable.pack
+
+# добавим поле для ввода пароля
+password_entry = Entry(root, bg='black', fg='lime', font='Arial 12')
+password_entry.pack()
+# Выводим в окно password_entry.pack()
+
+
 
 root.mainloop()
 
