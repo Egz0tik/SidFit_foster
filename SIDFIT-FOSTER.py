@@ -24,7 +24,7 @@ username_lable.pack()
 # выводим в окно username_lable.pack()
 
 
-#добовляем поле для ввода текста
+#добавляем поле для ввода текста
 username_entry = Entry(root, bg='black', fg='lime', font='Arial 12 bold')
 username_entry.pack()
 # Выводим в окно
