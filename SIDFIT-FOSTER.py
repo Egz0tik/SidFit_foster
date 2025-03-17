@@ -1,5 +1,10 @@
+from tkinter import *
 from colorama import *
-print('Добро пожаловать в "SIDFIT-FOSTER"')
-name = input('Введите ваше имя: ')
+from tkinter import messagebox
+
+# init()
+#print(Back.BLACK)
+print(Back.BLACK + Fore.RED + 'Добро пожаловать в "SIDFIT-FOSTER"')
+name = input(Fore.BLUE + Style.BRIGHT + 'Введите ваше имя: ')
 name1 ='Здравствуйте: '
-print(name1 + name)
+print(Fore.BLUE + name1 + name)
