@@ -2,6 +2,31 @@ from tkinter import *
 from tkinter import messagebox
 from colorama import *
 # Добавления цвета
+import json
+
+
+# Функция для регистрации нового пользователя
+def register():
+    username = username_entry.get()
+    password = password_entry.get()
+
+    if username and password:
+        # Проверяем, существует ли пользователь
+        if username in users:
+            messagebox.showerror('Ошибка', 'Пользователь с таким именем уже существует!')
+        else:
+            # Сохраняем нового пользователя
+            users[username] = password
+            save_users()
+            messagebox.showinfo('Успех', 'Регистрация прошла успешно!')
+    else:
+        messagebox.showerror('Ошибка', 'Заполните все поля!')
+# Функция для авторизации
+def click():
+    username = username_entry.get()
+    password = password_entry.get()
+
+    messagebox.showinfo('Авторизация пройдена', f'{username}, {password}')
 
 
 # Создание окна авторизации
@@ -38,6 +63,12 @@ password_lable.pack()
 password_entry = Entry(root, bg='black', fg='lime', font='Arial 12')
 password_entry.pack()
 # Выводим в окно password_entry.pack()
+
+
+# добавим кнопку
+send_button = Button(root, text= 'Войти', command=click)
+send_button.pack(padx=10, pady=8)
+# Выводим в окно кнопку с размером send_button.pack(padx=10, pady=8)
 
 
 
