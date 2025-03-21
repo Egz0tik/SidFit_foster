@@ -1,4 +1,4 @@
-# GAMES: SIDFIT-FOSTER
+# SIDFIT-FOSTER
 # Инструменты разработки
 
 * Языки программирования: Python
