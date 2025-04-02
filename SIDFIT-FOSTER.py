@@ -28,6 +28,21 @@ def click():
 
     messagebox.showinfo('Авторизация пройдена', f'{username}, {password}')
 
+#Инициализация данных пользователей из файла
+try:
+    with open('users.json', 'r') as file:
+        users = json.load(file)
+except FileNotFoundError:
+    users = {}
+
+
+
+#Функция сохранения пользователей
+def save_users():
+    with open('users.json', 'w') as file:
+        json.dump(users, file)
+
+
 
 # Создание окна авторизации
 root =Tk()
@@ -71,11 +86,17 @@ send_button = Button(root, text= 'Войти', command=click)
 send_button.pack(padx=10, pady=8)
 # Выводим в окно кнопку с размером send_button.pack(padx=10, pady=8)
 
-# Добавим кнопку регистрации
-register_button = Button(root, text='Зарегистрироваться', command=register)
+# Функция для открытия окна регистрации
+def open_register_window():
+    # Создаем новое окно
+    register_window = Toplevel(root)
+    register_window.title("Регистрация")
+    register_window.geometry("400x300")
+    register_window.resizable(False, False)
+
+# Добавим кнопку регистрации с переходом на новое окно
+register_button = Button(root, text="Зарегистрироваться", command=open_register_window)
 register_button.pack(padx=10, pady=8)
-
-
 
 root.mainloop()
 
