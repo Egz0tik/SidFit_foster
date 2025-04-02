@@ -41,6 +41,7 @@ root.resizable(width=False, height=False)
 root['bg'] = 'black'
 # Добавим фон (balck-черный)
 
+
 main_label = Label(root, text='Авторизация', font='Arial 15 bold', bg='black', fg='white' )
 main_label.pack()
 # выводим в окно main_label.pack()
@@ -69,6 +70,10 @@ password_entry.pack()
 send_button = Button(root, text= 'Войти', command=click)
 send_button.pack(padx=10, pady=8)
 # Выводим в окно кнопку с размером send_button.pack(padx=10, pady=8)
+
+# Добавим кнопку регистрации
+register_button = Button(root, text='Зарегистрироваться', command=register)
+register_button.pack(padx=10, pady=8)
 
 
 
