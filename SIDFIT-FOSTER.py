@@ -63,7 +63,7 @@ password_entry = Entry(root, bg='black', fg='lime', font='Arial 12')
 password_entry.pack()
 
 # Кнопка входа
-send_button = Button(root, text='Войти', command=click)
+send_button = Button(root, text='Войти', command=click, bg='Lime')
 send_button.pack(padx=10, pady=8)
 
 # **Добавленная кнопка регистрации**
