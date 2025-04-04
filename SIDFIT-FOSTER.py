@@ -69,7 +69,7 @@ send_button.pack(padx=10, pady=8)
 # **Добавленная кнопка регистрации**
 register_button = Button(root, text='Зарегистрироваться', command=register)
 register_button.pack(padx=10, pady=8)
-root.iconbitmap('D:\GitHub-Pycharm\icon.ico')
+root.iconbitmap('D:/GitHub-Pycharm/icon.ico')
 root.mainloop()
 
 # init()
