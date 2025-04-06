@@ -37,6 +37,7 @@ def click():
 
     if username in users and users[username] == password:
         messagebox.showinfo('Авторизация пройдена', f'{username}, вы успешно вошли!')
+        open_new_window(username)  # Открываем новое окно после успешной авторизации
     else:
         messagebox.showerror('Ошибка', 'Неправильное имя пользователя или пароль!')
 
@@ -70,6 +71,32 @@ send_button.pack(padx=10, pady=8)
 register_button = Button(root, text='Зарегистрироваться', command=register)
 register_button.pack(padx=10, pady=8)
 root.iconbitmap('D:/GitHub-Pycharm/icon.ico')
+
+# Функция для открытия нового окна после авторизации
+def open_new_window(username):
+    new_window = Toplevel(root)
+    new_window.title('Добро пожаловать')
+    new_window.geometry('400x300')
+    new_window.resizable(width=False, height=False)
+    new_window['bg'] = 'black'
+
+    welcome_label = Label(new_window,
+                          text=f'Добро пожаловать, {username}!',
+                          font='Arial 20 bold',
+                          bg='black',
+                          fg='lime')
+    welcome_label.pack(pady=50)
+
+    info_label = Label(new_window,
+                       text='Вы успешно авторизовались в системе',
+                       font='Arial 14',
+                       bg='black',
+                       fg='white')
+    info_label.pack()
+
+
+
+
 root.mainloop()
 
 # init()
