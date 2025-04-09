@@ -1,4 +1,4 @@
-# SIDFIT-FOSTER
+# SIDFIT-FOSTER-Authorization
 # Инструменты разработки
 
 * Языки программирования: Python
