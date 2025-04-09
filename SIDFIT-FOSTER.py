@@ -47,7 +47,7 @@ def click():
         username_entry.delete(0, END)
         password_entry.delete(0, END)
 
-# Создание окна авторизации
+# Создания окна авторизации
 root = Tk()
 root.title('Авторизация')
 root.geometry('450x230')
