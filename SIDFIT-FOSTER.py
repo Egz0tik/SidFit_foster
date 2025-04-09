@@ -40,6 +40,9 @@ def click():
         open_new_window(username)  # Открываем новое окно после успешной авторизации
     else:
         messagebox.showerror('Ошибка', 'Неправильное имя пользователя или пароль!')
+        # Очищаем поля ввода
+        username_entry.delete(0, END)
+        password_entry.delete(0, END)
 
 # Создание окна авторизации
 root = Tk()
