@@ -38,6 +38,9 @@ def click():
     if username in users and users[username] == password:
         messagebox.showinfo('Авторизация пройдена', f'{username}, вы успешно вошли!')
         open_new_window(username)  # Открываем новое окно после успешной авторизации
+        # Очищаем поля при успешной авторизации
+        username_entry.delete(0, END)
+        password_entry.delete(0, END)
     else:
         messagebox.showerror('Ошибка', 'Неправильное имя пользователя или пароль!')
         # Очищаем поля ввода
