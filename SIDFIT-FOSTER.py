@@ -25,6 +25,11 @@ def register():
     else:
         messagebox.showerror('Ошибка', 'Заполните все поля!')
 
+# Функция для очистки полей
+def clear_fields():
+    username_entry.delete(0, END)
+    password_entry.delete(0, END)
+
 # Функция для сохранения пользователей в файл
 def save_users():
     with open('users.json', 'w') as file:
@@ -50,7 +55,7 @@ def click():
 # Создания окна авторизации
 root = Tk()
 root.title('Авторизация')
-root.geometry('450x230')
+root.geometry('450x280')
 root.resizable(width=False, height=False)
 root['bg'] = 'black'
 
@@ -77,6 +82,14 @@ send_button.pack(padx=10, pady=8)
 register_button = Button(root, text='Зарегистрироваться', command=register)
 register_button.pack(padx=10, pady=8)
 root.iconbitmap('D:/GitHub-Pycharm/icon.ico')
+
+# Новая кнопка "Очистить"
+clear_button = Button(root,
+                     text='Очистить',
+                     command=clear_fields,
+                     bg='gray',
+                     fg='white')
+clear_button.pack(padx=10, pady=5)
 
 # Функция для открытия нового окна после авторизации
 def open_new_window(username):
