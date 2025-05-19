@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from colorama import *
 import json
-
+import time
 # Инициализация данных пользователей
 try:
     with open('users.json', 'r') as file:
@@ -29,6 +29,12 @@ def register():
 def clear_fields():
     username_entry.delete(0, END)
     password_entry.delete(0, END)
+
+# Функция для обновления времени
+def update_time():
+    current_time = time.strftime("%H:%M:%S")  # Текущее время в формате часы:минуты:секунды
+    time_label.config(text=f"{current_time}")  # Обновляем текст метки
+    root.after(1000, update_time)  # Вызываем функцию снова через 1000 мс (1 секунду)
 
 # Функция для сохранения пользователей в файл
 def save_users():
@@ -90,6 +96,13 @@ clear_button = Button(root,
                      bg='gray',
                      fg='white')
 clear_button.pack(padx=10, pady=5)
+
+# Метка для отображения времени
+time_label = Label(root, font='Arial 10 bold', bg='black', fg='cyan')  # Цвет текста - синий
+time_label.place(relx=0.95, rely=0.05, anchor='ne')  # Размещаем в правом верхнем углу
+
+# Запускаем обновление времени
+update_time()
 
 # Функция для открытия нового окна после авторизации
 def open_new_window(username):
