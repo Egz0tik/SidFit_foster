@@ -276,7 +276,7 @@ def click():
 
 # Создание окна авторизации
 root = Tk()
-root.title('Авторизация')
+root.title('SIDFIT-FOSTER-TANKS')
 root.geometry('450x280')
 root.resizable(width=False, height=False)
 root['bg'] = 'black'
