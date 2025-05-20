@@ -276,7 +276,7 @@ def click():
 
 # Создание окна авторизации
 root = Tk()
-root.title('SIDFIT-FOSTER-TANKS')
+root.title('Авторизация')
 root.geometry('450x280')
 root.resizable(width=False, height=False)
 root['bg'] = 'black'
@@ -286,6 +286,38 @@ image = Image.open("D:/GitHub-Pycharm/TANK1.jpg")
 background_image = ImageTk.PhotoImage(image)
 background_label = Label(root, image=background_image)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+# Добавление музыки
+def play_music():
+    pygame.mixer.init()  # Инициализация mixer
+    pygame.mixer.music.load("D:/GitHub-Pycharm/TANK-Good Time.mp3")  # Укажите путь к вашему аудиофайлу
+    pygame.mixer.music.play(loops=-1)  # Воспроизведение музыки в цикле
+
+def on_closing():
+    pygame.mixer.music.stop()  # Останавливаем музыку
+    root.destroy()  # Закрываем окно
+
+root.protocol("WM_DELETE_WINDOW", on_closing)  # Привязываем функцию к событию закрытия окна
+
+play_music()  # Запуск музыки при старте программы
+
+
+# Функция для управления музыкой (пауза/возобновление)
+is_music_playing = True  # Флаг для отслеживания состояния музыки
+
+def toggle_music():
+    global is_music_playing
+    if is_music_playing:
+        pygame.mixer.music.pause()  # Приостановить музыку
+        music_button.config(text="Включить музыку")  # Изменить текст кнопки
+    else:
+        pygame.mixer.music.unpause()  # Возобновить музыку
+        music_button.config(text="Отключить музыку")  # Изменить текст кнопки
+    is_music_playing = not is_music_playing  # Переключить флаг
+
+# Кнопка отключения музыки
+music_button = Button(root, text="Отключить музыку", command=toggle_music, bg='gray', fg='white', width=15, height=1)
+music_button.pack(pady=10)
 
 main_label = Label(root, text='Авторизация', font='Arial 15 bold', bg='black', fg='white')
 main_label.pack()
