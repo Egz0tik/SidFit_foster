@@ -277,12 +277,12 @@ def click():
 # Создание окна авторизации
 root = Tk()
 root.title('Авторизация')
-root.geometry('450x280')
+root.geometry('450x450')
 root.resizable(width=False, height=False)
 root['bg'] = 'black'
 
 # Загрузка JPG изображения
-image = Image.open("D:/GitHub-Pycharm/TANK1.jpg")
+image = Image.open("D:/GitHub-Pycharm/TANK2.jpg")
 background_image = ImageTk.PhotoImage(image)
 background_label = Label(root, image=background_image)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
