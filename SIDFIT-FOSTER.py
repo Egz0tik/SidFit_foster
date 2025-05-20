@@ -79,7 +79,7 @@ def save_users():
 # Добавление музыки
 def play_music():
     pygame.mixer.init()  # Инициализация mixer
-    pygame.mixer.music.load("D:/GitHub-Pycharm/TANK-Good Time.mp3")  # Укажите путь к вашему аудиофайлу
+    pygame.mixer.music.load("D:/GitHub-Pycharm/TANK-proezd tanka.mp3")  # Укажите путь к вашему аудиофайлу
     pygame.mixer.music.play(loops=-1)  # Воспроизведение музыки в цикле
 
 def on_closing():
@@ -98,10 +98,10 @@ def toggle_music():
     global is_music_playing
     if is_music_playing:
         pygame.mixer.music.pause()  # Приостановить музыку
-        music_button.config(text="Включить музыку")  # Изменить текст кнопки
+        music_button.config(text="Включить звуки")  # Изменить текст кнопки
     else:
         pygame.mixer.music.unpause()  # Возобновить музыку
-        music_button.config(text="Отключить музыку")  # Изменить текст кнопки
+        music_button.config(text="Отключить звуки")  # Изменить текст кнопки
     is_music_playing = not is_music_playing  # Переключить флаг
 
 # Функция для запуска игры "Танки"
@@ -315,7 +315,7 @@ def start_tanks_game():
     pygame.quit()
 
 # Кнопка отключения музыки
-music_button = Button(root, text="Отключить музыку", command=toggle_music, bg='gray', fg='white', width=15, height=1)
+music_button = Button(root, text="Отключить звуки", command=toggle_music, bg='gray', fg='white', width=15, height=1)
 music_button.place(relx=0.95, rely=0.95, anchor='se')  # Размещаем в правом нижнем углу
 
 username_entry = Entry(root, bg='black', fg='lime', font='Arial 12', insertbackground='lime')
