@@ -8,6 +8,47 @@ from colorama import *
 import json
 import time
 import sys
+
+
+# Функция для авторизации
+def click():
+    username = username_entry.get()
+    password = password_entry.get()
+
+    if username in users and users[username] == password:
+        messagebox.showinfo('Авторизация пройдена', f'{username}, вы успешно вошли!')
+        open_new_window(username)  # Открываем новое окно после успешной авторизации
+        # Очищаем поля при успешной авторизации
+        username_entry.delete(0, END)
+        password_entry.delete(0, END)
+    else:
+        messagebox.showerror('Ошибка', 'Неправильное имя пользователя или пароль!')
+        # Очищаем поля ввода
+        username_entry.delete(0, END)
+        password_entry.delete(0, END)
+
+# Создание окна авторизации
+root = Tk()
+root.title('Авторизация')
+root.geometry('450x450')
+root.resizable(width=False, height=False)
+root['bg'] = 'black'
+root.iconbitmap('D:/GitHub-Pycharm/icon.ico')
+
+# Загрузка JPG изображения
+image = Image.open("D:/GitHub-Pycharm/TANK3.jpg")
+background_image = ImageTk.PhotoImage(image)
+background_label = Label(root, image=background_image)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+# Функция для открытия нового окна после авторизации
+def open_new_window(username):
+    new_window = Toplevel(root)
+    new_window.title('Добро пожаловать')
+    new_window.geometry('400x300')
+    new_window.resizable(width=False, height=False)
+    new_window['bg'] = 'black'
+
 # Инициализация данных пользователей
 try:
     with open('users.json', 'r') as file:
@@ -30,22 +71,38 @@ def register():
     else:
         messagebox.showerror('Ошибка', 'Заполните все поля!')
 
-# Функция для очистки полей
-def clear_fields():
-    username_entry.delete(0, END)
-    password_entry.delete(0, END)
-
-# Функция для обновления времени
-def update_time():
-    current_time = time.strftime("%H:%M:%S")  # Текущее время в формате часы:минуты:секунды
-    time_label.config(text=f"{current_time}")  # Обновляем текст метки
-    root.after(1000, update_time)  # Вызываем функцию снова через 1000 мс (1 секунду)
-
 # Функция для сохранения пользователей в файл
 def save_users():
     with open('users.json', 'w') as file:
         json.dump(users, file)
 
+# Добавление музыки
+def play_music():
+    pygame.mixer.init()  # Инициализация mixer
+    pygame.mixer.music.load("D:/GitHub-Pycharm/TANK-Good Time.mp3")  # Укажите путь к вашему аудиофайлу
+    pygame.mixer.music.play(loops=-1)  # Воспроизведение музыки в цикле
+
+def on_closing():
+    pygame.mixer.music.stop()  # Останавливаем музыку
+    root.destroy()  # Закрываем окно
+
+root.protocol("WM_DELETE_WINDOW", on_closing)  # Привязываем функцию к событию закрытия окна
+
+play_music()  # Запуск музыки при старте программы
+
+
+# Функция для управления музыкой (пауза/возобновление)
+is_music_playing = True  # Флаг для отслеживания состояния музыки
+
+def toggle_music():
+    global is_music_playing
+    if is_music_playing:
+        pygame.mixer.music.pause()  # Приостановить музыку
+        music_button.config(text="Включить музыку")  # Изменить текст кнопки
+    else:
+        pygame.mixer.music.unpause()  # Возобновить музыку
+        music_button.config(text="Отключить музыку")  # Изменить текст кнопки
+    is_music_playing = not is_music_playing  # Переключить флаг
 
 # Функция для запуска игры "Танки"
 def start_tanks_game():
@@ -257,106 +314,24 @@ def start_tanks_game():
 
     pygame.quit()
 
-# Функция для авторизации
-def click():
-    username = username_entry.get()
-    password = password_entry.get()
-
-    if username in users and users[username] == password:
-        messagebox.showinfo('Авторизация пройдена', f'{username}, вы успешно вошли!')
-        open_new_window(username)  # Открываем новое окно после успешной авторизации
-        # Очищаем поля при успешной авторизации
-        username_entry.delete(0, END)
-        password_entry.delete(0, END)
-    else:
-        messagebox.showerror('Ошибка', 'Неправильное имя пользователя или пароль!')
-        # Очищаем поля ввода
-        username_entry.delete(0, END)
-        password_entry.delete(0, END)
-
-# Создание окна авторизации
-root = Tk()
-root.title('Авторизация')
-root.geometry('450x450')
-root.resizable(width=False, height=False)
-root['bg'] = 'black'
-
-# Загрузка JPG изображения
-image = Image.open("D:/GitHub-Pycharm/TANK2.jpg")
-background_image = ImageTk.PhotoImage(image)
-background_label = Label(root, image=background_image)
-background_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-# Добавление музыки
-def play_music():
-    pygame.mixer.init()  # Инициализация mixer
-    pygame.mixer.music.load("D:/GitHub-Pycharm/TANK-Good Time.mp3")  # Укажите путь к вашему аудиофайлу
-    pygame.mixer.music.play(loops=-1)  # Воспроизведение музыки в цикле
-
-def on_closing():
-    pygame.mixer.music.stop()  # Останавливаем музыку
-    root.destroy()  # Закрываем окно
-
-root.protocol("WM_DELETE_WINDOW", on_closing)  # Привязываем функцию к событию закрытия окна
-
-play_music()  # Запуск музыки при старте программы
-
-
-# Функция для управления музыкой (пауза/возобновление)
-is_music_playing = True  # Флаг для отслеживания состояния музыки
-
-def toggle_music():
-    global is_music_playing
-    if is_music_playing:
-        pygame.mixer.music.pause()  # Приостановить музыку
-        music_button.config(text="Включить музыку")  # Изменить текст кнопки
-    else:
-        pygame.mixer.music.unpause()  # Возобновить музыку
-        music_button.config(text="Отключить музыку")  # Изменить текст кнопки
-    is_music_playing = not is_music_playing  # Переключить флаг
-
 # Кнопка отключения музыки
 music_button = Button(root, text="Отключить музыку", command=toggle_music, bg='gray', fg='white', width=15, height=1)
-music_button.pack(pady=10)
+music_button.place(relx=0.95, rely=0.95, anchor='se')  # Размещаем в правом нижнем углу
 
-main_label = Label(root, text='Авторизация', font='Arial 15 bold', bg='black', fg='white')
-main_label.pack()
-
-username_label = Label(root, text='Имя пользователя', font='Arial 11 bold', bg='black', fg='white', padx=10, pady=8)
-username_label.pack()
-
-username_entry = Entry(root, bg='black', fg='lime', font='Arial 12')
-username_entry.pack()
-
-password_label = Label(root, text='Пароль', font='Arial 11 bold', bg='black', fg='white', padx=10, pady=8)
-password_label.pack()
+username_entry = Entry(root, bg='black', fg='lime', font='Arial 12', insertbackground='lime')
+username_entry.place(relx=0.5, rely=0.345, anchor='center')
 
 password_entry = Entry(root, bg='black', fg='lime', font='Arial 12')
-password_entry.pack()
+password_entry.place(relx=0.5, rely=0.480, anchor='center')
 
-# Кнопка входа
-send_button = Button(root, text='Войти', command=click, bg='Lime')
-send_button.pack(padx=10, pady=8)
+# Кнопка "Войти"
+send_button = Button(root, text='Войти', command=click, bg='lime', fg='black', width=10, height=1)
+send_button.place(relx=0.5, rely=0.6, anchor='center')  # Размещение по центру
 
-# **Добавленная кнопка регистрации**
+# Добавленная кнопка регистрации
 register_button = Button(root, text='Зарегистрироваться', command=register)
-register_button.pack(padx=10, pady=8)
-root.iconbitmap('D:/GitHub-Pycharm/icon.ico')
+register_button.place(relx=0.5, rely=0.7, anchor='center')  # Размещение по центру
 
-# Новая кнопка "Очистить"
-clear_button = Button(root,
-                     text='Очистить',
-                     command=clear_fields,
-                     bg='gray',
-                     fg='white')
-clear_button.pack(padx=10, pady=5)
-
-# Метка для отображения времени
-time_label = Label(root, font='Arial 10 bold', bg='black', fg='cyan')  # Цвет текста - синий
-time_label.place(relx=0.95, rely=0.05, anchor='ne')  # Размещаем в правом верхнем углу
-
-# Запускаем обновление времени
-update_time()
 
 # Функция для открытия нового окна после авторизации
 def open_new_window(username):
@@ -390,14 +365,4 @@ def open_new_window(username):
                         height=2)
     game_button.pack(pady=30)
 
-
-
-
 root.mainloop()
-
-# init()
-# print(Back.BLACK)
-# print(Back.BLACK + Fore.RED + 'Добро пожаловать в "SIDFIT-FOSTER"')
-# name = input(Fore.BLUE + Style.BRIGHT + 'Введите ваше имя: ')
-# name1 = 'Здравствуйте: '
-# print(Fore.BLUE + name1 + name)
