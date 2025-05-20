@@ -33,10 +33,10 @@ root.title('Авторизация')
 root.geometry('450x450')
 root.resizable(width=False, height=False)
 root['bg'] = 'black'
-root.iconbitmap('D:/GitHub-Pycharm/icon.ico')
+root.iconbitmap('/GitHub-Pycharm/icon.ico')
 
 # Загрузка JPG изображения
-image = Image.open("D:/GitHub-Pycharm/TANK3.jpg")
+image = Image.open("/GitHub-Pycharm/TANK3.jpg")
 background_image = ImageTk.PhotoImage(image)
 background_label = Label(root, image=background_image)
 background_label.place(x=0, y=0, relwidth=1, relheight=1)
@@ -79,7 +79,7 @@ def save_users():
 # Добавление музыки
 def play_music():
     pygame.mixer.init()  # Инициализация mixer
-    pygame.mixer.music.load("D:/GitHub-Pycharm/TANK-proezd tanka.mp3")  # Укажите путь к вашему аудиофайлу
+    pygame.mixer.music.load("/GitHub-Pycharm/TANK-proezd tanka.mp3")  # Укажите путь к вашему аудиофайлу
     pygame.mixer.music.play(loops=-1)  # Воспроизведение музыки в цикле
 
 def on_closing():
