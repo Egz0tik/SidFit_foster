@@ -1,9 +1,9 @@
-
 import pygame
 import random
 import math
 from tkinter import *
 from tkinter import messagebox
+from PIL import Image, ImageTk
 from colorama import *
 import json
 import time
@@ -280,6 +280,12 @@ root.title('Авторизация')
 root.geometry('450x280')
 root.resizable(width=False, height=False)
 root['bg'] = 'black'
+
+# Загрузка JPG изображения
+image = Image.open("D:/GitHub-Pycharm/TANK1.jpg")
+background_image = ImageTk.PhotoImage(image)
+background_label = Label(root, image=background_image)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 main_label = Label(root, text='Авторизация', font='Arial 15 bold', bg='black', fg='white')
 main_label.pack()
