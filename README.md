@@ -55,3 +55,7 @@ pygame.mixer.music.load("assets/TANK-proezd_tanka.mp3")
 ``` bash
 pip install -r requirements.txt
 ```
+Запустите игру:
+``` bash
+python src/main.py
+```
