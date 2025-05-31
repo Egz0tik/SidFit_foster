@@ -23,3 +23,11 @@ Tank-Game/
 ├── .gitignore            # Файл для игнорирования ненужных файлов
 └── README.md             # Основная документация проекта
 ```
+### 2. Перемещение файлов
+Переместите все ресурсы (например, icon.ico, TANK3.jpg, TANK-proezd tanka.mp3) в папку assets.
+Внесите изменения в пути к файлам в коде. Например:
+``` bash
+root.iconbitmap('assets/icon.ico')
+image = Image.open("assets/TANK3.jpg")
+pygame.mixer.music.load("assets/TANK-proezd_tanka.mp3")
+```
