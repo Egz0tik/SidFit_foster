@@ -59,3 +59,11 @@ pip install -r requirements.txt
 ``` bash
 python src/main.py
 ```
+
+### Зависимости
+Python 3.x
+Pygame
+Tkinter
+Pillow
+Colorama
+Установите зависимости с помощью:
