@@ -65,3 +65,6 @@ python src/main.py
 | Python 3.x | Pygame | Tkinter | Pillow | Colorama |
 
 Установите зависимости с помощью:
+``` bash
+pip install pygame pillow colorama
+```
