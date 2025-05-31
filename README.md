@@ -51,3 +51,7 @@ pygame.mixer.music.load("assets/TANK-proezd_tanka.mp3")
    git clone https://github.com/yourusername/Tank-Game.git 
    cd Tank-Game
 ```
+Установите необходимые зависимости:
+``` bash
+pip install -r requirements.txt
+```
