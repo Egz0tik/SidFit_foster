@@ -43,11 +43,12 @@ pygame.mixer.music.load("assets/TANK-proezd_tanka.mp3")
 - Сохранение данных пользователей в файл `users.json`.
 - Мультиплеер на одном экране (два игрока).
 - Добавлена фоновая музыка и возможность её отключения.
-
+```
 ## Установка
 
 1. Клонируйте репозиторий:
-   ```bash
+
+```bash
    git clone https://github.com/yourusername/Tank-Game.git 
    cd Tank-Game
 ```
