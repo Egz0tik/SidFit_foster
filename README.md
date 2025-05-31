@@ -66,4 +66,5 @@ Pygame
 Tkinter
 Pillow
 Colorama
+
 Установите зависимости с помощью:
